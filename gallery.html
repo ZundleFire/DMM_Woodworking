@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gallery — DMM Woodworking | Lancaster, PA</title>
+  <meta name="description" content="Browse photos of our custom kitchen cabinets, bathroom vanities, islands and more — built by hand in Lancaster, PA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-hero {
+      background:
+        linear-gradient(160deg, rgba(10,20,30,.75), rgba(27,56,90,.60)),
+        url('assets/images/downloaded/Kitchen 2 BW Designs.jpeg') center/cover no-repeat;
+      padding: 80px 0;
+      color: var(--white);
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem,5vw,3rem);
+      margin-bottom: 12px;
+    }
+    .page-hero p { opacity: .85; font-size: 1.05rem; }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border: 2px solid var(--border);
+      border-radius: 100px;
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    /* Gallery grid */
+    .full-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .gallery-figure {
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--dark);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-figure img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: transform .4s ease, opacity .3s ease;
+      display: block;
+    }
+    .gallery-figure:hover img { transform: scale(1.05); opacity: .8; }
+    .gallery-figure figcaption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 14px;
+      background: linear-gradient(transparent, rgba(10,20,30,.75));
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+    .gallery-figure:hover figcaption { opacity: 1; }
+
+    /* Empty state */
+    .gallery-empty {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 60px 0;
+      color: var(--muted);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,12,20,.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 8px;
+      object-fit: contain;
+      box-shadow: 0 8px 60px rgba(0,0,0,.6);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: .8;
+      transition: opacity .2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,.8);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.12);
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      padding: 12px 18px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background .2s;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,.25); }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    @media(max-width:860px) { .full-gallery-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:500px) { .full-gallery-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/images/downloaded/DMM Logo Gold.png" alt="DMM Woodworking" class="logo-img">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero">
+      <div class="wrap">
+        <h1>Our Work</h1>
+        <p>Custom kitchens, vanities, islands and more — each one built by hand.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+
+        <!-- Filter buttons — auto-built from categories in gallery.json -->
+        <div class="filter-bar" id="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+        </div>
+
+        <!-- Grid — auto-populated from gallery.json -->
+        <div class="full-gallery-grid" id="gallery-grid">
+          <p class="gallery-empty">Loading gallery…</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section section-cta">
+      <div class="wrap cta-inner">
+        <div class="cta-text">
+          <h2>Like what you see?</h2>
+          <p>Contact us for a free quote on your custom cabinetry project.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-white">Get a Free Quote</a>
+          <a href="tel:+17173902828" class="btn btn-ghost-white">(717) 390-2828</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a href="index.html">
+          <img src="assets/images/downloaded/DMM Logo Gold.png" alt="DMM Woodworking" class="footer-logo-img">
+        </a>
+        <p>Handcrafted custom cabinetry<br>in Lancaster, PA since day one.</p>
+        <p class="footer-address">518 Fremont Street<br>Lancaster, PA 17603</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+17173902828">(717) 390-2828</a>
+        <a href="mailto:sales@dmmwoodworkingpa.com">sales@dmmwoodworkingpa.com</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">
+        <p>&copy; 2025 DMM Woodworking LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lb-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Next">&#8250;</button>
+    <div class="lightbox-caption" id="lb-caption"></div>
+  </div>
+
+  <script>
+    // ── Nav toggle ────────────────────────────────────────
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.querySelector('.site-nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      })
+    );
+
+    // ── Gallery loader ────────────────────────────────────
+    let allPhotos   = [];
+    let filtered    = [];
+    let currentIdx  = 0;
+    const grid      = document.getElementById('gallery-grid');
+    const filterBar = document.getElementById('filter-bar');
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lb-img');
+    const lbCaption = document.getElementById('lb-caption');
+
+    fetch('gallery.json')
+      .then(r => r.json())
+      .then(photos => {
+        allPhotos = photos;
+        buildFilters(photos);
+        renderGrid(photos);
+      })
+      .catch(() => {
+        grid.innerHTML = '<p class="gallery-empty">Gallery coming soon.</p>';
+      });
+
+    function buildFilters(photos) {
+      const cats = [...new Set(photos.map(p => p.category).filter(Boolean))];
+      cats.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.filter = cat;
+        btn.textContent = cat;
+        btn.addEventListener('click', () => setFilter(cat));
+        filterBar.appendChild(btn);
+      });
+      filterBar.querySelector('[data-filter="all"]')
+        .addEventListener('click', () => setFilter('all'));
+    }
+
+    function setFilter(cat) {
+      document.querySelectorAll('.filter-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.filter === cat)
+      );
+      filtered = cat === 'all' ? allPhotos : allPhotos.filter(p => p.category === cat);
+      renderGrid(filtered);
+    }
+
+    function renderGrid(photos) {
+      if (!photos.length) {
+        grid.innerHTML = '<p class="gallery-empty">No photos in this category yet.</p>';
+        return;
+      }
+      filtered = photos;
+      grid.innerHTML = photos.map((p, i) => `
+        <figure class="gallery-figure" data-index="${i}" role="button" tabindex="0"
+                aria-label="View ${p.caption}">
+          <img src="${p.file}" alt="${p.caption}" loading="lazy">
+          <figcaption>${p.caption}</figcaption>
+        </figure>
+      `).join('');
+
+      grid.querySelectorAll('.gallery-figure').forEach(fig => {
+        fig.addEventListener('click',  () => openLightbox(+fig.dataset.index));
+        fig.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') openLightbox(+fig.dataset.index);
+        });
+      });
+    }
+
+    // ── Lightbox ──────────────────────────────────────────
+    function openLightbox(idx) {
+      currentIdx = idx;
+      showSlide(currentIdx);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function showSlide(idx) {
+      const p = filtered[idx];
+      lbImg.src = p.file;
+      lbImg.alt = p.caption;
+      lbCaption.textContent = p.caption;
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', () => {
+      currentIdx = (currentIdx - 1 + filtered.length) % filtered.length;
+      showSlide(currentIdx);
+    });
+    document.getElementById('lb-next').addEventListener('click', () => {
+      currentIdx = (currentIdx + 1) % filtered.length;
+      showSlide(currentIdx);
+    });
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  { currentIdx = (currentIdx - 1 + filtered.length) % filtered.length; showSlide(currentIdx); }
+      if (e.key === 'ArrowRight') { currentIdx = (currentIdx + 1) % filtered.length; showSlide(currentIdx); }
+    });
+  </script>
+
+</body>
+</html>
