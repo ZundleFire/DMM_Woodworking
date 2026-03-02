@@ -1,27 +1,27 @@
 [
   {
-    "file": "assets/images/downloaded/Kitchen 2 BW Designs.jpeg",
+    "file": "assets/work-examples/kitchen/Kitchen 2 BW Designs.jpeg",
     "caption": "Custom Kitchen Design",
     "category": "Kitchen"
   },
   {
-    "file": "assets/images/downloaded/Kitchen.jpeg",
+    "file": "assets/work-examples/kitchen/Kitchen.jpeg",
     "caption": "Custom Kitchen",
     "category": "Kitchen"
   },
   {
-    "file": "assets/images/downloaded/BW Kitchen Picture.jpeg",
+    "file": "assets/work-examples/kitchen/BW Kitchen Picture.jpeg",
     "caption": "Kitchen Cabinets",
     "category": "Kitchen"
   },
   {
-    "file": "assets/images/downloaded/Kitchen Island.jpeg",
+    "file": "assets/work-examples/kitchen/Kitchen Island.jpeg",
     "caption": "Kitchen Island",
     "category": "Kitchen"
   },
   {
-    "file": "assets/images/downloaded/Bathroom Vanity.jpeg",
+    "file": "assets/work-examples/bathroom/Bathroom Vanity.jpeg",
     "caption": "Bathroom Vanity",
-    "category": "Vanity"
+    "category": "Bathroom"
   }
 ]

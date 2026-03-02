@@ -1,0 +1,8 @@
+{
+  "name": "dmm-woodworking",
+  "version": "1.0.0",
+  "description": "DMM Woodworking website",
+  "scripts": {
+    "build:gallery": "node build-gallery.js"
+  }
+}

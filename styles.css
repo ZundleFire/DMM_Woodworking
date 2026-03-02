@@ -10,21 +10,24 @@ a    { text-decoration: none; color: inherit; }
 
 /* ── Design tokens ───────────────────────────────────────── */
 :root {
-  --blue:        #2B5672;   /* original site accent */
-  --blue-dk:     #1A3A50;
-  --blue-lt:     #4E86AA;
-  --cream:       #F5F7F9;
-  --cream-dk:    #E8EDF2;
-  --dark:        #111820;
-  --text:        #1E2A35;
-  --muted:       #5A6A78;
-  --border:      #D1DCE6;
+  --blue:        #122a8a;   /* primary accent blue */
+  --blue-dk:     #0d1f66;
+  --blue-lt:     #2e4db5;
+  --gold:        #f4bb59;   /* primary gold */
+  --gold-dk:     #d9a035;
+  --gold-lt:     #f8cf84;
+  --cream:       #F5F5F0;
+  --cream-dk:    #EAEAE3;
+  --dark:        #0a1020;
+  --text:        #1a1f36;
+  --muted:       #5A6278;
+  --border:      #C8CDE0;
   --white:       #FFFFFF;
 
   /* Aliases used through the stylesheet */
-  --wood:        var(--blue);
-  --wood-dk:     var(--blue-dk);
-  --wood-lt:     var(--blue-lt);
+  --wood:        var(--gold);
+  --wood-dk:     var(--blue);
+  --wood-lt:     var(--gold-lt);
 
   --radius:      8px;
   --shadow-sm:   0 1px 4px rgba(0,0,0,.08);
@@ -66,7 +69,7 @@ body {
   display:         flex;
   align-items:     center;
   justify-content: space-between;
-  height:          72px;
+  height:          88px;
   gap:             16px;
 }
 
@@ -83,7 +86,7 @@ body {
 .logo span { color: var(--blue); }
 
 .logo-img {
-  height:       56px;
+  height:       72px;
   width:        auto;
   display:      block;
   object-fit:   contain;
@@ -108,7 +111,7 @@ body {
 }
 .site-nav a:hover,
 .site-nav a.active {
-  background: var(--wood);
+  background: var(--blue);
   color:      var(--white);
 }
 
@@ -150,13 +153,13 @@ body {
 }
 
 .btn-primary {
-  background:   var(--wood);
+  background:   var(--blue);
   color:        var(--white);
-  border-color: var(--wood);
+  border-color: var(--blue);
 }
 .btn-primary:hover {
-  background:   var(--wood-dk);
-  border-color: var(--wood-dk);
+  background:   var(--blue-dk);
+  border-color: var(--blue-dk);
   transform:    translateY(-2px);
   box-shadow:   var(--shadow);
 }
@@ -173,11 +176,11 @@ body {
 
 .btn-outline {
   background:   transparent;
-  color:        var(--wood);
-  border-color: var(--wood);
+  color:        var(--blue);
+  border-color: var(--blue);
 }
 .btn-outline:hover {
-  background: var(--wood);
+  background: var(--blue);
   color:      var(--white);
   transform:  translateY(-2px);
 }
@@ -209,7 +212,7 @@ body {
   font-weight:    600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color:          var(--wood);
+  color:          var(--blue);
   margin-bottom:  10px;
 }
 .eyebrow.center { text-align: center; }
@@ -235,10 +238,10 @@ body {
   background:
     linear-gradient(
       160deg,
-      rgba(10,20,30,0.72) 0%,
-      rgba(27,56,90,0.55) 100%
+      rgba(10,16,40,0.78) 0%,
+      rgba(18,42,138,0.50) 100%
     ),
-    url('assets/images/downloaded/Kitchen 2 BW Designs.jpeg')
+    url('assets/work-examples/kitchen/Kitchen 2 BW Designs.jpeg')
     center / cover no-repeat;
 }
 
@@ -254,7 +257,7 @@ body {
   font-weight:    600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color:          var(--blue-lt);
+  color:          var(--gold);
   margin-bottom:  16px;
 }
 
@@ -367,11 +370,11 @@ body {
   display:    inline-block;
   font-size:  0.85rem;
   font-weight: 600;
-  color:      var(--wood);
+  color:      var(--blue);
   padding:    0 20px 20px;
   transition: color var(--transition);
 }
-.card-link:hover { color: var(--wood-dk); }
+.card-link:hover { color: var(--blue-dk); }
 
 /* ── Gallery Preview ──────────────────────────────────────── */
 .section-gallery { background: var(--cream-dk); }
@@ -481,7 +484,7 @@ body {
   color:         var(--white);
   margin-bottom: 14px;
 }
-.footer-brand .logo span { color: var(--wood-lt); }
+.footer-brand .logo span { color: var(--gold); }
 .footer-brand p {
   font-size:   0.9rem;
   line-height: 1.8;
@@ -499,7 +502,7 @@ body {
   font-weight:    700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color:          var(--wood-lt);
+  color:          var(--gold);
   margin-bottom:  6px;
 }
 .footer-col a {
@@ -546,7 +549,7 @@ body {
     display:        none;
     flex-direction: column;
     position:       absolute;
-    top:            72px;
+    top:            88px;
     left:           0; right: 0;
     background:     var(--white);
     border-bottom:  2px solid var(--border);
