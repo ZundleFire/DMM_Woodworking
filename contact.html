@@ -196,9 +196,19 @@
             <h2>Tell us about your project</h2>
             <p class="subhead">Send your details and any files — plans, inspiration photos, a rough sketch. We'll respond within one business day.</p>
 
-            <!-- Formspree endpoint — submissions email to sales@dmmwoodworkingpa.com.
-                 Manage the form at https://formspree.io (project: DMM_Woodworking). -->
-            <form id="contact-form" action="https://formspree.io/f/mdeobdpl" method="POST" enctype="multipart/form-data">
+            <!-- FORM ON HOLD: to re-enable, remove the .form-hold notice below and the
+                 inert attribute + opacity/pointer-events style on the <form>, and switch
+                 the button back to type="submit". Formspree endpoint is live
+                 (f/mdeobdpl → sales@dmmwoodworkingpa.com, project: DMM_Woodworking). -->
+            <p class="form-hold" style="border:1px solid var(--gold);background:var(--cream);padding:14px 16px;font-size:.9rem;color:var(--charcoal);margin-bottom:22px">
+              Our online form is temporarily unavailable. Please
+              <a href="tel:+17173902828" style="color:var(--green);border-bottom:1px solid var(--gold)">call (717)&nbsp;390-2828</a> or email
+              <a href="mailto:sales@dmmwoodworkingpa.com" style="color:var(--green);border-bottom:1px solid var(--gold)">sales@dmmwoodworkingpa.com</a>
+              and we'll get right back to you.
+            </p>
+
+            <form id="contact-form" action="https://formspree.io/f/mdeobdpl" method="POST" enctype="multipart/form-data"
+                  inert style="opacity:.55;pointer-events:none">
 
               <div class="form-row">
                 <label for="name">Name *</label>
@@ -229,7 +239,7 @@
               </div>
 
               <div class="form-submit">
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="button" class="btn btn-primary" disabled>Send Message</button>
               </div>
               <p class="form-note">We'll never share your information with third parties.</p>
             </form>
