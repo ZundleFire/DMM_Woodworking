@@ -8,18 +8,37 @@ Built with plain HTML5, CSS3, and vanilla JS — no build step required.
 ## Project Structure
 
 ```
-clean-site/
+.
 ├── index.html          # Homepage
 ├── about-us.html       # About page
-├── gallery.html        # Photo gallery
+├── gallery.html        # Our Work — photo gallery (reads gallery.json)
 ├── contact.html        # Contact & quote request
-├── styles.css          # Shared stylesheet
+├── styles.css          # Shared stylesheet (brand style guide v2.0)
+├── build-gallery.js    # Regenerates gallery.json from assets/work-examples/
+├── gallery.json        # Generated gallery manifest — do not edit by hand
 ├── sitemap.xml
 ├── robots.txt
 ├── .gitignore
 └── assets/
-    └── images/         # Local copies of all site images
+    ├── images/         # Logo + brand line-art icons (icons/)
+    └── work-examples/  # Project photos, one folder per gallery category
+        ├── kitchen/
+        ├── bathroom/
+        ├── built-ins/
+        └── details/
 ```
+
+## Gallery
+
+Drop images into `assets/work-examples/<category>/`, then run:
+
+```bash
+node build-gallery.js
+```
+
+This rewrites `gallery.json`. Filenames become captions (dashes/underscores → spaces,
+title-cased), and the folder name becomes the filter label (see `CATEGORY_LABELS`
+in `build-gallery.js`).
 
 ---
 
@@ -93,17 +112,15 @@ npx serve clean-site
 
 ## Contact Form
 
-The form currently uses `mailto:` (opens the visitor's email client).  
-For a zero-server solution, replace it with a **free [Formspree](https://formspree.io)** endpoint:
+The contact form supports **file uploads** (plans, photos, sketches), which needs a
+form backend. It's pre-wired for **free [Formspree](https://formspree.io)** — create a
+form and replace `YOUR_FORM_ID` in the `<form action>` in `contact.html`:
 
-In `contact.html` change the opening `<form>` tag:
 ```html
-<!-- Before -->
-<form action="mailto:info@dmmwoodworking.com" method="POST" enctype="text/plain" novalidate>
-
-<!-- After (remove enctype too) -->
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
 ```
+
+Keep `enctype="multipart/form-data"` so attachments come through.
 
 ---
 

@@ -19,9 +19,11 @@ const IMG_EXTS  = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif']);
 
 /** Maps folder name (lowercase) → category label shown in the gallery filter. */
 const CATEGORY_LABELS = {
-  kitchen:  'Kitchen',
-  bathroom: 'Bathroom',
-  other:    'Other',
+  kitchen:    'Kitchens',
+  bathroom:   'Bathrooms',
+  'built-ins': 'Built-Ins',
+  details:    'Details',
+  other:      'Other',
 };
 
 /** Converts a filename (without extension) into a human-readable caption. */

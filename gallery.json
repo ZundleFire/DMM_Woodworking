@@ -1,27 +1,87 @@
 [
   {
-    "file": "assets/work-examples/kitchen/Kitchen 2 BW Designs.jpeg",
-    "caption": "Custom Kitchen Design",
-    "category": "Kitchen"
+    "file": "assets/work-examples/bathroom/White Oak Double Vanity.jpg",
+    "caption": "White Oak Double Vanity",
+    "category": "Bathrooms"
   },
   {
-    "file": "assets/work-examples/kitchen/Kitchen.jpeg",
-    "caption": "Custom Kitchen",
-    "category": "Kitchen"
+    "file": "assets/work-examples/built-ins/Glass Display Cabinet.jpg",
+    "caption": "Glass Display Cabinet",
+    "category": "Built-Ins"
   },
   {
-    "file": "assets/work-examples/kitchen/BW Kitchen Picture.jpeg",
-    "caption": "Kitchen Cabinets",
-    "category": "Kitchen"
+    "file": "assets/work-examples/built-ins/Green Butlers Pantry.jpg",
+    "caption": "Green Butlers Pantry",
+    "category": "Built-Ins"
   },
   {
-    "file": "assets/work-examples/kitchen/Kitchen Island.jpeg",
-    "caption": "Kitchen Island",
-    "category": "Kitchen"
+    "file": "assets/work-examples/built-ins/Living Room Beams and Mantel.jpg",
+    "caption": "Living Room Beams And Mantel",
+    "category": "Built-Ins"
   },
   {
-    "file": "assets/work-examples/bathroom/Bathroom Vanity.jpeg",
-    "caption": "Bathroom Vanity",
-    "category": "Bathroom"
+    "file": "assets/work-examples/details/Concealed Pull-Out Bins.jpg",
+    "caption": "Concealed Pull Out Bins",
+    "category": "Details"
+  },
+  {
+    "file": "assets/work-examples/details/Custom Spice Drawer.jpg",
+    "caption": "Custom Spice Drawer",
+    "category": "Details"
+  },
+  {
+    "file": "assets/work-examples/details/Island Post Detail.jpg",
+    "caption": "Island Post Detail",
+    "category": "Details"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Cream Kitchen with Lanterns.jpg",
+    "caption": "Cream Kitchen With Lanterns",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Custom Kitchen Cabinetry.jpg",
+    "caption": "Custom Kitchen Cabinetry",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/English Cream Kitchen.jpg",
+    "caption": "English Cream Kitchen",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Hickory Kitchen Cabinets.jpg",
+    "caption": "Hickory Kitchen Cabinets",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Kitchen Island Seating.jpg",
+    "caption": "Kitchen Island Seating",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Reeded Glass Display Cabinets.jpg",
+    "caption": "Reeded Glass Display Cabinets",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Rustic Hickory Kitchen.jpg",
+    "caption": "Rustic Hickory Kitchen",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Transitional Kitchen Island.jpg",
+    "caption": "Transitional Kitchen Island",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Walnut and Greige Kitchen.jpg",
+    "caption": "Walnut And Greige Kitchen",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/White Modern Kitchen.jpg",
+    "caption": "White Modern Kitchen",
+    "category": "Kitchens"
   }
 ]

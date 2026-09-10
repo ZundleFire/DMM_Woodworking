@@ -4,18 +4,53 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>About — DMM Woodworking | Lancaster, PA</title>
-  <meta name="description" content="DMM Woodworking LLC builds completely custom cabinetry by hand in Lancaster, PA. Learn about our story and craftsmanship.">
+  <meta name="description" content="DMM Woodworking has been Lancaster's custom cabinet maker since 1993 — designing, manufacturing and installing custom kitchens, closets, vanities and fine woodworking in-house.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .about-hero {
+      background:
+        linear-gradient(90deg, rgba(28,21,19,.86) 0%, rgba(28,21,19,.55) 55%, rgba(28,21,19,.25) 100%),
+        url('assets/work-examples/kitchen/Walnut and Greige Kitchen.jpg') center / cover no-repeat;
+      color: var(--white);
+    }
+    .about-hero .wrap { padding-top: 96px; padding-bottom: 96px; }
+    .about-hero .eyebrow { color: var(--gold); }
+    .about-hero h1 { color: var(--white); font-size: clamp(2.2rem, 5vw, 3.6rem); max-width: 16ch; margin-bottom: 20px; }
+    .about-hero p { max-width: 540px; color: rgba(255,255,255,.9); }
+    .about-hero .btn { margin-top: 26px; }
+
+    .fact-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding: 28px 0;
+      margin-top: 44px;
+    }
+    .fact strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--walnut);
+    }
+    .fact span { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--oak); }
+    @media (max-width: 720px) { .fact-row { grid-template-columns: 1fr 1fr; } }
+
+    .values-list { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
+    .values-list li { padding-left: 22px; position: relative; color: var(--charcoal); }
+    .values-list li::before { content: ""; position: absolute; left: 0; top: .7em; width: 10px; height: 2px; background: var(--gold); }
+  </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="wrap header-inner">
       <a href="index.html" class="logo">
-        <img src="assets/images/DMM Logo Gold.png" alt="DMM Woodworking" class="logo-img">
+        <img src="assets/images/dmm-logo.png" alt="DMM Woodworking" class="logo-img">
       </a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -23,7 +58,7 @@
       <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="about-us.html" class="active">About</a>
-        <a href="gallery.html">Gallery</a>
+        <a href="gallery.html">Our Work</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
@@ -31,63 +66,131 @@
 
   <main>
 
+    <!-- ─── ABOUT HERO ────────────────────────────────── -->
+    <section class="about-hero">
+      <div class="wrap">
+        <p class="eyebrow">About DMM Woodworking</p>
+        <h1>Rooted in tradition. Built on skill and integrity.</h1>
+        <p>DMM Woodworking specializes in custom kitchens, closet systems, vanities, wet and dry bars and other fine woodworking projects. We design, manufacture and install our own work with uncompromising attention to detail and heirloom-quality craftsmanship for residential and commercial clients.</p>
+        <a href="contact.html" class="btn btn-ghost">Start a Conversation</a>
+      </div>
+    </section>
+
+    <!-- ─── STORY + FACTS ─────────────────────────────── -->
     <section class="section section-intro">
       <div class="wrap two-col">
         <div class="intro-text">
           <p class="eyebrow">Our Story</p>
-          <h2>Craftsmanship from start to finish.</h2>
-          <p>DMM Woodworking LLC was built on a simple belief: every home deserves cabinetry that's truly made for it. We design and build every piece completely from scratch — no stock cabinets, no shortcuts.</p>
-          <p>Based in Lancaster, PA, we work directly with homeowners, contractors and designers throughout the region to bring custom woodworking projects to life — on time and to the highest standard.</p>
-          <p>Whether it's a full kitchen renovation, a custom bathroom vanity or a built-in closet system, we bring the same skill and care to every project, large or small.</p>
+          <h2>Concept to completion, under one roof.</h2>
+          <div class="gold-rule"></div>
+          <p>We've been Lancaster's custom cabinet makers since 1993. Every piece we create reflects a commitment to excellent materials, honest communication and timeless craftsmanship.</p>
+          <p>Because design, manufacturing and installation all happen in-house, the people who draw your cabinets are the same people who build and hang them — so nothing gets lost in translation.</p>
+          <p>We partner with custom home builders, designers, architects and homeowners to create custom, quality cabinetry that elevates every space.</p>
         </div>
-        <div class="intro-image" style="aspect-ratio:unset;background:none;box-shadow:none;overflow:visible;display:flex;align-items:center;justify-content:center;">
-          <img src="assets/images/DMM Logo Gold.png" alt="DMM Woodworking logo" loading="lazy" style="width:auto;height:auto;max-width:300px;max-height:300px;object-fit:contain;display:block;margin:0 auto;transform:none;">
+        <div class="intro-image">
+          <img src="assets/work-examples/details/Island Post Detail.jpg" alt="Close-up of a walnut island post and marble edge" loading="lazy">
         </div>
       </div>
-    </section>
-
-    <section class="section section-services" style="padding-top:0">
       <div class="wrap">
-        <p class="eyebrow center">What We Offer</p>
-        <h2 class="section-title">Our Services</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-img">
-              <img src="assets/work-examples/kitchen/Kitchen 2 BW Designs.jpeg" alt="Custom kitchen" loading="lazy">
-            </div>
-            <h3>Custom Kitchens</h3>
-            <p>Full kitchen design and build — cabinets, islands, pantries and more.</p>
+        <div class="fact-row">
+          <div class="fact"><strong>1993</strong><span>Founded</span></div>
+          <div class="fact"><strong>Lancaster, PA</strong><span>Design &amp; Shop</span></div>
+          <div class="fact"><strong>In-House</strong><span>Design · Build · Install</span></div>
+          <div class="fact"><strong>Residential &amp; Commercial</strong><span>Clients</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CRAFT + VALUES ────────────────────────────── -->
+    <section class="section section-other">
+      <div class="wrap other-inner">
+        <img src="assets/work-examples/kitchen/Hickory Kitchen Cabinets.jpg" alt="Hickory kitchen cabinetry with visible wood grain" loading="lazy">
+        <div class="other-text">
+          <p class="eyebrow">The Heart of Our Work</p>
+          <h2>Craftsmanship, collaboration, excellence.</h2>
+          <div class="gold-rule"></div>
+          <p>Those three words are our core values, and they show up in the details: the joinery you don't see, the finish that holds up, the drawer that closes the same way in year twenty as it did on day one.</p>
+          <ul class="values-list">
+            <li>Custom kitchens, islands and pantries</li>
+            <li>Closet systems and built-in storage</li>
+            <li>Bathroom vanities</li>
+            <li>Wet &amp; dry bars</li>
+            <li>Bedroom sets and custom furniture</li>
+            <li>Custom doors, drawer fronts &amp; solid-wood drawer boxes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FEATURE ROW ───────────────────────────────── -->
+    <section class="section section-features">
+      <div class="wrap">
+        <p class="eyebrow center">Our Craft. Our Skills.</p>
+        <h2 class="section-title">What sets our cabinetry apart</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <img src="assets/images/icons/design.png" alt="">
+            <h3>In-House Design</h3>
+            <p>Photo-realistic renderings before we build.</p>
           </div>
-          <div class="service-card">
-            <div class="service-img">
-              <img src="assets/work-examples/bathroom/Bathroom Vanity.jpeg" alt="Bathroom vanity" loading="lazy">
-            </div>
-            <h3>Bathroom Vanities</h3>
-            <p>Custom vanities built to your dimensions, finish and hardware preferences.</p>
+          <div class="feature">
+            <img src="assets/images/icons/materials.png" alt="">
+            <h3>Premium Materials</h3>
+            <p>Hardwoods and hardware selected for longevity.</p>
           </div>
-          <div class="service-card">
-            <div class="service-img">
-              <img src="assets/work-examples/kitchen/Kitchen Island.jpeg" alt="Kitchen island" loading="lazy">
-            </div>
-            <h3>Islands &amp; Bars</h3>
-            <p>Freestanding and built-in kitchen islands, wet bars and entertainment centers.</p>
+          <div class="feature">
+            <img src="assets/images/icons/craft.png" alt="">
+            <h3>Master Craftsmanship</h3>
+            <p>Careful joinery and refined finishing standards.</p>
           </div>
-          <div class="service-card">
-            <div class="service-img">
-              <img src="assets/work-examples/kitchen/Kitchen.jpeg" alt="Custom cabinetry" loading="lazy">
-            </div>
-            <h3>Custom Storage</h3>
-            <p>Closet systems, built-in shelving and any other storage solution.</p>
+          <div class="feature">
+            <img src="assets/images/icons/install.png" alt="">
+            <h3>Clean Installation</h3>
+            <p>Cabinets, trim and hardware, finished seamlessly.</p>
+          </div>
+          <div class="feature">
+            <img src="assets/images/icons/lasting.png" alt="">
+            <h3>Built to Last</h3>
+            <p>Quality that becomes part of your home's story.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ─── PROCESS BAND ──────────────────────────────── -->
+    <section class="section section-process">
+      <div class="wrap process-grid">
+        <div>
+          <p class="eyebrow">Our Process</p>
+          <h2>Designed around you. Built with care.</h2>
+        </div>
+        <div class="process-card"><strong>01 · Consult</strong><p>We listen, plan and learn your goals, space and vision.</p></div>
+        <div class="process-card"><strong>02 · Design</strong><p>Thoughtful layouts and renderings, refined until it's right.</p></div>
+        <div class="process-card"><strong>03 · Build</strong><p>Built and finished in our shop with rigorous quality control.</p></div>
+        <div class="process-card"><strong>04 · Install</strong><p>Delivered and installed — cabinets, trim and hardware.</p></div>
+      </div>
+    </section>
+
+    <!-- ─── LANCASTER COUNTY ──────────────────────────── -->
+    <section class="section section-other">
+      <div class="wrap other-inner">
+        <div class="other-text">
+          <p class="eyebrow">Lancaster Crafted</p>
+          <h2>Proudly built in Lancaster County</h2>
+          <div class="gold-rule"></div>
+          <p>Our roots run deep in craftsmanship, hard work and treating people right. We partner with builders and designers who share those values and our commitment to exceptional results — and we've been doing it here since 1993.</p>
+          <a href="contact.html" class="btn btn-outline">Let's Build Together</a>
+        </div>
+        <img src="assets/work-examples/built-ins/Living Room Beams and Mantel.jpg" alt="Living room with custom wood ceiling beams and mantel" loading="lazy">
+      </div>
+    </section>
+
+    <!-- ─── CTA BAND ──────────────────────────────────── -->
     <section class="section section-cta">
       <div class="wrap cta-inner">
         <div class="cta-text">
           <h2>Free quotes, no obligation.</h2>
-          <p>Tell us about your project and we'll get back to you with a free estimate.</p>
+          <p>Tell us about your project and we'll get back to you with an estimate.</p>
         </div>
         <div class="cta-actions">
           <a href="contact.html" class="btn btn-white">Contact Us</a>
@@ -102,27 +205,28 @@
     <div class="wrap footer-inner">
       <div class="footer-brand">
         <a href="index.html">
-          <img src="assets/images/DMM Logo Gold.png" alt="DMM Woodworking" class="footer-logo-img">
+          <img src="assets/images/dmm-logo.png" alt="DMM Woodworking" class="footer-logo-img">
         </a>
-        <p>Handcrafted custom cabinetry<br>in Lancaster, PA since day one.</p>
+        <p>Lancaster Crafted. Built to Last.<br>Custom cabinet makers since 1993.</p>
         <p class="footer-address">518 Fremont Street<br>Lancaster, PA 17603</p>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
         <a href="index.html">Home</a>
         <a href="about-us.html">About</a>
-        <a href="gallery.html">Gallery</a>
+        <a href="gallery.html">Our Work</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <a href="tel:+17173902828">(717) 390-2828</a>
-        <a href="contact.html">Send a message</a>
+        <a href="mailto:sales@dmmwoodworkingpa.com">sales@dmmwoodworkingpa.com</a>
+        <a href="sitemap.xml">Sitemap</a>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="wrap">
-        <p>&copy; 2025 DMM Woodworking LLC. All rights reserved.</p>
+        <p>&copy; 2026 DMM Woodworking LLC. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -134,6 +238,9 @@
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
     });
+    nav.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); })
+    );
   </script>
 
 </body>
