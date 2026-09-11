@@ -6,9 +6,19 @@
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
   <title>Our Work — DMM Woodworking | Lancaster, PA</title>
   <meta name="description" content="Examples of our work, complete and in use — custom kitchens, built-ins, bath vanities, bars and the details that set them apart. Built in Lancaster, PA.">
+  <link rel="canonical" href="https://www.dmmwoodworking.com/gallery.html">
+  <meta property="og:site_name" content="DMM Woodworking LLC">
+  <meta property="og:title" content="Our Work — DMM Woodworking | Lancaster, PA">
+  <meta property="og:description" content="Custom kitchens, built-ins, bath vanities and the details that set them apart — complete, and in use.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.dmmwoodworking.com/gallery.html">
+  <meta property="og:image" content="https://www.dmmwoodworking.com/assets/work-examples/kitchen/Walnut%20and%20Greige%20Kitchen.jpg">
+  <meta property="og:image:alt" content="Walnut and greige custom kitchen built by DMM Woodworking">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/work-examples/kitchen/Walnut%20and%20Greige%20Kitchen.jpg" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <style>
     .page-hero.gallery-hero {
@@ -87,18 +97,19 @@
       color: var(--oak);
     }
 
-    /* Lightbox */
+    /* Lightbox — a native <dialog>, so the UA supplies the focus trap,
+       Escape handling, top-layer stacking and focus restore. */
     .lightbox {
-      display: none;
       position: fixed;
       inset: 0;
-      background: rgba(28,21,19,.94);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
+      width: 100%;  max-width: none;
+      height: 100%; max-height: none;
+      border: 0;
       padding: 24px;
+      background: rgba(28,21,19,.94);
+      overflow: hidden;
     }
-    .lightbox.open { display: flex; }
+    .lightbox[open] { display: flex; align-items: center; justify-content: center; }
     .lightbox img {
       max-width: 90vw;
       max-height: 85vh;
@@ -253,13 +264,13 @@
   </footer>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
     <button class="lightbox-close" id="lb-close" aria-label="Close">&times;</button>
     <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
     <img id="lb-img" src="" alt="">
     <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Next">&#8250;</button>
     <div class="lightbox-caption" id="lb-caption"></div>
-  </div>
+  </dialog>
 
   <script>
     // ── Nav toggle ────────────────────────────────────────
@@ -351,20 +362,16 @@
     }
 
     // ── Lightbox ──────────────────────────────────────────
-    let lastFocused = null;
+    // showModal() focuses the close button, traps Tab inside the dialog, closes
+    // on Escape and returns focus to the photo that opened it — all for free.
     function openLightbox(idx) {
-      lastFocused = document.activeElement;
       currentIdx = idx;
       showSlide(currentIdx);
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('lb-close').focus();
+      lightbox.showModal();
+      document.body.style.overflow = 'hidden';   // the UA still scrolls the page behind
     }
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-      if (lastFocused) lastFocused.focus();   // return focus to the photo that opened it
-    }
+    function closeLightbox() { lightbox.close(); }
+    lightbox.addEventListener('close', () => { document.body.style.overflow = ''; });
     function showSlide(idx) {
       const p = filtered[idx];
       lbImg.src = p.file;
@@ -383,8 +390,7 @@
     });
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape')     closeLightbox();
+      if (!lightbox.open) return;
       if (e.key === 'ArrowLeft')  { currentIdx = (currentIdx - 1 + filtered.length) % filtered.length; showSlide(currentIdx); }
       if (e.key === 'ArrowRight') { currentIdx = (currentIdx + 1) % filtered.length; showSlide(currentIdx); }
     });

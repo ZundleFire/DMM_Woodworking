@@ -23,12 +23,10 @@ a    { text-decoration: none; color: inherit; }
   /* Style-guide oak is #A38A6B, but it is only ever used for small uppercase
      text (eyebrows, step labels, hints) where it scored 2.99:1 on cream — below
      the 4.5:1 WCAG AA minimum. Darkened to clear AA on cream, cream-dk and white
-     while keeping the same hue. Use --oak-accent for non-text (borders/icons). */
+     while keeping the same hue. For non-text (borders, icons) #A38A6B is fine. */
   --oak:        #75624D;   /* secondary accents — text     */
-  --oak-accent: #A38A6B;   /* original tone, non-text only */
   --charcoal:   #4A4A4A;   /* body text                    */
   --gold:       #D4B88C;   /* borders, icons, rules        */
-  --gold-dk:    #bfa075;
   --white:      #FFFFFF;
 
   --shadow-sm:  0 1px 4px rgba(60,47,47,.10);
@@ -256,8 +254,13 @@ h1, h2, h3, h4 {
   min-height:  620px;
   display:     flex;
   align-items: center;
+  /* Overlay lives in a variable so the phone breakpoint can swap it without
+     repeating the image URL. The alphas are set by measured contrast, not by
+     eye: the photo runs to near-white behind the sub-heading, and white body
+     text needs 4.5:1 over whatever ends up underneath it. */
   background:
-    linear-gradient(90deg, rgba(28,21,19,.82) 0%, rgba(28,21,19,.45) 45%, rgba(28,21,19,.10) 100%),
+    var(--hero-overlay,
+        linear-gradient(90deg, rgba(28,21,19,.88) 0%, rgba(28,21,19,.80) 52%, rgba(28,21,19,.30) 100%)),
     url('assets/work-examples/kitchen/Walnut and Greige Kitchen.jpg') center / cover no-repeat;
 }
 .hero-content {
@@ -349,17 +352,6 @@ h1, h2, h3, h4 {
 }
 .service-card h3 { font-size: 1.35rem; margin: 6px 0 10px; }
 .service-card p  { font-size: .95rem; color: var(--charcoal); }
-.card-link {
-  display:     inline-block;
-  margin-top:  14px;
-  font-size:   .8rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color:       var(--green);
-  border-bottom: 1px solid var(--gold);
-  padding-bottom: 2px;
-}
 
 /* ── Other services strip ────────────────────────────────── */
 .section-other { background: var(--white); }
@@ -499,7 +491,6 @@ h1, h2, h3, h4 {
 }
 .footer-logo-img { width: 130px; height: auto; margin-bottom: 18px; }
 .footer-brand p { font-size: .9rem; color: rgba(248,244,237,.62); line-height: 1.8; }
-.footer-address { margin-top: 12px; }
 .footer-col { display: flex; flex-direction: column; gap: 10px; }
 .footer-col h2 {
   font-family: var(--font-sans);
@@ -513,13 +504,16 @@ h1, h2, h3, h4 {
 /* overflow-wrap keeps the long sales@ address inside its column at tablet widths */
 .footer-col a { font-size: .9rem; color: rgba(248,244,237,.62); transition: color var(--transition); overflow-wrap: anywhere; }
 .footer-col a:hover { color: var(--white); }
-.footer-hours { font-size: .82rem; color: rgba(248,244,237,.45); line-height: 1.7; margin-top: 4px; }
+/* The de-emphasised footer text was set at .45 and .4 alpha, which measured
+   4.03:1 and 3.48:1 on walnut-dk — under the 4.5:1 AA minimum. .55 still reads
+   as secondary next to the .62 links but clears AA. */
+.footer-hours { font-size: .82rem; color: rgba(248,244,237,.55); line-height: 1.7; margin-top: 4px; }
 .footer-bottom {
   border-top: 1px solid rgba(248,244,237,.12);
   padding: 20px 24px;
   text-align: center;
   font-size: .8rem;
-  color: rgba(248,244,237,.4);
+  color: rgba(248,244,237,.55);
 }
 
 /* ── Responsive ─────────────────────────────────────────── */
@@ -539,6 +533,9 @@ h1, h2, h3, h4 {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-item.tall { grid-row: span 1; }
   .gallery-item.tall img { min-height: unset; }
+  /* Hero text spans the full width here, so a left-to-right fade would drop
+     the end of every line onto the bright part of the photo — flatten it. */
+  .hero { --hero-overlay: linear-gradient(rgba(28,21,19,.80), rgba(28,21,19,.80)); }
   .cta-inner { flex-direction: column; text-align: center; }
   .cta-text p { margin: 0 auto; }
   .cta-actions { justify-content: center; }

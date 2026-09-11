@@ -59,6 +59,16 @@ The script caps the longest edge at 1800px, saves progressive JPEG at quality 82
 and strips EXIF (which on phone photos can carry the GPS location of a customer's
 home). It skips files that are already web-sized, so it is safe to re-run.
 
+## Hero overlays — don't lighten these
+
+The dark gradients over the hero photos in `styles.css` (`.hero`) and `about-us.html`
+(`.about-hero`) are not styling preference — their alpha values are set so white body
+text clears the WCAG AA 4.5:1 contrast minimum against the brightest pixels of the
+photo behind it. The photos run to near-white, so lightening the overlay drops the
+sub-heading below AA. Each breakpoint has its own overlay for the same reason: once
+text spans the full width on phones, a left-to-right fade leaves the end of every line
+on the bright side of the image, so those widths use an even wash instead.
+
 ---
 
 ## Local Preview
@@ -68,14 +78,13 @@ Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ri
 
 **Option 2 — Python**
 ```bash
-cd clean-site
-python -m http.server 8080
+python -m http.server 8080    # from the repo root
 # Open http://localhost:8080
 ```
 
 **Option 3 — Node**
 ```bash
-npx serve clean-site
+npx serve .
 ```
 
 ---
@@ -84,9 +93,8 @@ npx serve clean-site
 
 1. **Create a GitHub repo** (e.g. `dmmwoodworking`).
 
-2. **Push the `clean-site` folder contents** to the root of the repo:
+2. **Push the repo contents** to the root of the GitHub repo:
    ```bash
-   cd clean-site
    git init
    git remote add origin https://github.com/YOUR_USERNAME/dmmwoodworking.git
    git add .
@@ -110,7 +118,7 @@ npx serve clean-site
 
 ## Deploy to Cloudflare Pages
 
-1. Push the `clean-site` contents to a GitHub repo (steps 1–2 above).
+1. Push the repo contents to a GitHub repo (steps 1–2 above).
 
 2. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
 
@@ -131,15 +139,21 @@ npx serve clean-site
 
 ## Contact Form
 
-The contact form supports **file uploads** (plans, photos, sketches), which needs a
-form backend. It's pre-wired for **free [Formspree](https://formspree.io)** — create a
-form and replace `YOUR_FORM_ID` in the `<form action>` in `contact.html`:
+The form in `contact.html` is wired to **[Formspree](https://formspree.io)** at
+`https://formspree.io/f/mdeobdpl`, which delivers to sales@dmmwoodworkingpa.com. It
+supports file uploads (plans, photos, sketches) — keep `enctype="multipart/form-data"`
+on the `<form>` or attachments will be dropped.
 
-```html
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
-```
+### The form is currently on hold
 
-Keep `enctype="multipart/form-data"` so attachments come through.
+The page shows a call/email fallback notice instead, and the form itself is dimmed and
+`inert` so nothing can be typed or submitted. To turn it back on:
+
+1. Delete the `<p class="form-hold">…</p>` notice.
+2. Remove `inert` and `style="opacity:.55;pointer-events:none"` from the `<form>`.
+3. Change the submit button back to `type="submit"` and drop its `disabled` attribute.
+
+The same steps are noted in a comment directly above the form.
 
 ---
 

@@ -6,16 +6,31 @@
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
   <title>About — DMM Woodworking | Lancaster, PA</title>
   <meta name="description" content="DMM Woodworking has been Lancaster's custom cabinet maker since 1993 — designing, manufacturing and installing custom kitchens, closets, vanities and fine woodworking in-house.">
+  <link rel="canonical" href="https://www.dmmwoodworking.com/about-us.html">
+  <meta property="og:site_name" content="DMM Woodworking LLC">
+  <meta property="og:title" content="About — DMM Woodworking | Lancaster, PA">
+  <meta property="og:description" content="Lancaster's custom cabinet makers since 1993. Design, manufacturing and installation, all in-house.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.dmmwoodworking.com/about-us.html">
+  <meta property="og:image" content="https://www.dmmwoodworking.com/assets/work-examples/kitchen/Walnut%20and%20Greige%20Kitchen.jpg">
+  <meta property="og:image:alt" content="Walnut and greige custom kitchen built by DMM Woodworking">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/work-examples/kitchen/Walnut%20and%20Greige%20Kitchen.jpg" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <style>
     .about-hero {
       background:
-        linear-gradient(90deg, rgba(28,21,19,.86) 0%, rgba(28,21,19,.55) 55%, rgba(28,21,19,.25) 100%),
+        var(--hero-overlay,
+            linear-gradient(90deg, rgba(28,21,19,.88) 0%, rgba(28,21,19,.72) 55%, rgba(28,21,19,.30) 100%)),
         url('assets/work-examples/kitchen/Walnut and Greige Kitchen.jpg') center / cover no-repeat;
       color: var(--white);
+    }
+    /* Same reason as .hero — full-width text needs an even wash, not a fade. */
+    @media (max-width: 860px) {
+      .about-hero { --hero-overlay: linear-gradient(rgba(28,21,19,.82), rgba(28,21,19,.82)); }
     }
     .about-hero .wrap { padding-top: 96px; padding-bottom: 96px; }
     .about-hero .eyebrow { color: var(--gold); }
