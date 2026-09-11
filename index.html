@@ -34,6 +34,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <!-- ─── HEADER ─────────────────────────────────────── -->
   <header class="site-header">
     <div class="wrap header-inner">
@@ -56,7 +58,7 @@
   </header>
 
   <!-- ─── HERO ───────────────────────────────────────── -->
-  <section class="hero" aria-label="Hero">
+  <section class="hero" id="main" tabindex="-1" aria-label="Hero">
     <div class="hero-content">
       <p class="hero-tag">Lancaster Crafted · Built to Last</p>
       <h1>Custom Cabinetry, Concept to Completion</h1>
@@ -130,7 +132,7 @@
     </section>
 
     <!-- ─── OTHER SERVICES ────────────────────────────── -->
-    <section class="section section-other">
+    <section id="upgrades" class="section section-other">
       <div class="wrap other-inner">
         <img src="assets/work-examples/details/Custom Spice Drawer.jpg" alt="Custom solid-wood drawer with spice insert" loading="lazy">
         <div class="other-text">
@@ -249,20 +251,34 @@
           <img src="assets/images/dmm-logo.png" alt="DMM Woodworking" class="footer-logo-img">
         </a>
         <p>Lancaster Crafted. Built to Last.<br>Custom cabinet makers since 1993.</p>
-        <p class="footer-address">518 Fremont Street<br>Lancaster, PA 17603</p>
       </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
+
+      <nav class="footer-col" aria-label="Footer navigation">
+        <h2>Navigation</h2>
         <a href="index.html">Home</a>
-        <a href="about-us.html">About</a>
+        <a href="about-us.html">About Us</a>
         <a href="gallery.html">Our Work</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">Our Process</a>
         <a href="contact.html">Contact</a>
-      </div>
+      </nav>
+
+      <nav class="footer-col" aria-label="Services">
+        <h2>Services</h2>
+        <a href="gallery.html?category=Kitchens">Custom Kitchens</a>
+        <a href="gallery.html?category=Bathrooms">Bathroom Vanities</a>
+        <a href="gallery.html?category=Built-Ins">Built-Ins &amp; Storage</a>
+        <a href="index.html#upgrades">Doors &amp; Drawer Boxes</a>
+        <a href="index.html#services">Design · Build · Install</a>
+        <a href="contact.html">Request a Quote</a>
+      </nav>
+
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h2>Contact</h2>
         <a href="tel:+17173902828">(717) 390-2828</a>
         <a href="mailto:sales@dmmwoodworkingpa.com">sales@dmmwoodworkingpa.com</a>
-        <a href="sitemap.xml">Sitemap</a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=518+Fremont+Street,+Lancaster,+PA+17603" target="_blank" rel="noopener">518 Fremont Street<br>Lancaster, PA 17603</a>
+        <p class="footer-hours">Mon–Fri · 7:00 am – 3:30 pm EST<br>Shop visits by appointment</p>
       </div>
     </div>
     <div class="footer-bottom">

@@ -20,7 +20,12 @@ a    { text-decoration: none; color: inherit; }
   --cream-dk:   #EFE8DB;
   --green:      #2E4A3D;   /* buttons & accents            */
   --green-dk:   #223a30;
-  --oak:        #A38A6B;   /* secondary accents            */
+  /* Style-guide oak is #A38A6B, but it is only ever used for small uppercase
+     text (eyebrows, step labels, hints) where it scored 2.99:1 on cream — below
+     the 4.5:1 WCAG AA minimum. Darkened to clear AA on cream, cream-dk and white
+     while keeping the same hue. Use --oak-accent for non-text (borders/icons). */
+  --oak:        #75624D;   /* secondary accents — text     */
+  --oak-accent: #A38A6B;   /* original tone, non-text only */
   --charcoal:   #4A4A4A;   /* body text                    */
   --gold:       #D4B88C;   /* borders, icons, rules        */
   --gold-dk:    #bfa075;
@@ -49,6 +54,55 @@ body {
   max-width: 1180px;
   margin:    0 auto;
   padding:   0 24px;
+}
+
+/* ── Keyboard accessibility ──────────────────────────────── */
+
+/* Visible focus ring. The default UA outline all but disappears against the
+   walnut header and the dark hero, so set one explicitly everywhere. */
+:focus-visible {
+  outline:        3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius:  1px;
+}
+/* On light backgrounds gold is too faint to read as a focus ring — use green. */
+.section :focus-visible,
+.site-footer :focus-visible,
+.contact-form-card :focus-visible {
+  outline-color: var(--green);
+}
+.section-process :focus-visible,
+.section-cta :focus-visible { outline-color: var(--gold); }
+
+/* Skip link — first tab stop, lets keyboard and screen-reader users jump the
+   seven-item nav that repeats on every page. */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -100px;                 /* off-screen until focused */
+  z-index: 2000;
+  padding: 12px 20px;
+  background: var(--cream);
+  color: var(--walnut);
+  border: 1px solid var(--green);
+  font-weight: 600;
+  transition: top var(--transition);
+}
+.skip-link:focus { top: 12px; }
+
+/* Honour reduced-motion preferences: kill smooth scrolling, hover zooms and
+   long transitions for users who get motion sickness from them. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gallery-item:hover img,
+  .gallery-figure:hover img,
+  .service-card:hover { transform: none !important; }
 }
 
 h1, h2, h3, h4 {
@@ -437,7 +491,7 @@ h1, h2, h3, h4 {
 .site-footer { background: var(--walnut-dk); color: rgba(248,244,237,.7); }
 .footer-inner {
   display:               grid;
-  grid-template-columns: 1.8fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1.15fr 1.15fr;
   gap:                   48px;
   padding:               64px 24px 48px;
   max-width:             1180px;
@@ -447,7 +501,7 @@ h1, h2, h3, h4 {
 .footer-brand p { font-size: .9rem; color: rgba(248,244,237,.62); line-height: 1.8; }
 .footer-address { margin-top: 12px; }
 .footer-col { display: flex; flex-direction: column; gap: 10px; }
-.footer-col h4 {
+.footer-col h2 {
   font-family: var(--font-sans);
   font-size: .72rem;
   font-weight: 700;
@@ -456,8 +510,10 @@ h1, h2, h3, h4 {
   color: var(--gold);
   margin-bottom: 6px;
 }
-.footer-col a { font-size: .9rem; color: rgba(248,244,237,.62); transition: color var(--transition); }
+/* overflow-wrap keeps the long sales@ address inside its column at tablet widths */
+.footer-col a { font-size: .9rem; color: rgba(248,244,237,.62); transition: color var(--transition); overflow-wrap: anywhere; }
 .footer-col a:hover { color: var(--white); }
+.footer-hours { font-size: .82rem; color: rgba(248,244,237,.45); line-height: 1.7; margin-top: 4px; }
 .footer-bottom {
   border-top: 1px solid rgba(248,244,237,.12);
   padding: 20px 24px;
@@ -471,6 +527,10 @@ h1, h2, h3, h4 {
   .services-grid  { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
   .features-grid  { grid-template-columns: repeat(3, 1fr); row-gap: 40px; }
   .process-grid   { grid-template-columns: 1fr 1fr; }
+  /* Four footer columns get too narrow for the email address here — drop the
+     brand block onto its own row and let the three link columns share the next. */
+  .footer-inner   { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .footer-brand   { grid-column: 1 / -1; }
 }
 @media (max-width: 860px) {
   .two-col, .other-inner { grid-template-columns: 1fr; gap: 36px; }
@@ -482,8 +542,7 @@ h1, h2, h3, h4 {
   .cta-inner { flex-direction: column; text-align: center; }
   .cta-text p { margin: 0 auto; }
   .cta-actions { justify-content: center; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: 1 / -1; }
+  .footer-inner { gap: 36px; }
 }
 /* Six nav items + CTA stop fitting alongside the 120px logo well before phone
    width, so the hamburger takes over at tablet. */
