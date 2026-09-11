@@ -26,13 +26,22 @@ const CATEGORY_LABELS = {
   other:      'Other',
 };
 
+/** Words left lowercase in a title, unless they lead the caption. */
+const MINOR_WORDS = new Set(['a', 'an', 'and', 'at', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'with']);
+
 /** Converts a filename (without extension) into a human-readable caption. */
 function toCaption(filename) {
   return filename
-    .replace(/[-_]/g, ' ')          // dashes/underscores → spaces
+    .replace(/_/g, ' ')             // underscores → spaces (hyphens are kept: "Built-In")
     .replace(/\s+/g, ' ')
     .trim()
-    .replace(/\b\w/g, c => c.toUpperCase()); // title-case
+    .split(' ')
+    .map((word, i) =>
+      i > 0 && MINOR_WORDS.has(word.toLowerCase())
+        ? word.toLowerCase()
+        // capitalise the first letter, and any letter after a hyphen
+        : word.replace(/(^|-)(\w)/g, (_, sep, c) => sep + c.toUpperCase()))
+    .join(' ');
 }
 
 // ── Scan ──────────────────────────────────────────────────────────────────────

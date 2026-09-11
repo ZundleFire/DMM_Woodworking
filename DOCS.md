@@ -13,7 +13,9 @@ Built with plain HTML5, CSS3, and vanilla JS — no build step required.
 ├── about-us.html       # About page
 ├── gallery.html        # Our Work — photo gallery (reads gallery.json)
 ├── contact.html        # Contact & quote request
+├── 404.html            # Not-found page (GitHub Pages & Cloudflare Pages serve it automatically)
 ├── styles.css          # Shared stylesheet (brand style guide v2.0)
+├── resize-photos.py    # Shrinks work-example photos to web size — run before build-gallery.js
 ├── build-gallery.js    # Regenerates gallery.json from assets/work-examples/
 ├── gallery.json        # Generated gallery manifest — do not edit by hand
 ├── sitemap.xml
@@ -30,15 +32,32 @@ Built with plain HTML5, CSS3, and vanilla JS — no build step required.
 
 ## Gallery
 
-Drop images into `assets/work-examples/<category>/`, then run:
+Drop images into `assets/work-examples/<category>/`, then run both steps:
 
 ```bash
-node build-gallery.js
+python resize-photos.py    # shrink to web size (needs: pip install Pillow)
+node build-gallery.js      # rewrite gallery.json
 ```
 
-This rewrites `gallery.json`. Filenames become captions (dashes/underscores → spaces,
-title-cased), and the folder name becomes the filter label (see `CATEGORY_LABELS`
-in `build-gallery.js`).
+`build-gallery.js` rewrites `gallery.json`. Filenames become captions — underscores
+become spaces, words are title-cased, hyphens are kept (`Built-In` stays `Built-In`),
+and small words like *and* / *with* stay lowercase. The folder name becomes the
+filter label (see `CATEGORY_LABELS` in `build-gallery.js`).
+
+So name files the way you want the caption to read:
+`Cream Kitchen with Lanterns.jpg` → **Cream Kitchen with Lanterns**.
+
+### Photo sizing — don't skip this
+
+**Always run `resize-photos.py` before committing new photos.** Straight off a
+camera these run ~4900px and 1–4 MB each. The gallery displays them at 270px and
+the lightbox at ~1800px, so full-size files cost visitors megabytes for pixels they
+never see — the full gallery was a 28 MB page load before this was added, and is
+5.6 MB after.
+
+The script caps the longest edge at 1800px, saves progressive JPEG at quality 82,
+and strips EXIF (which on phone photos can carry the GPS location of a customer's
+home). It skips files that are already web-sized, so it is safe to re-run.
 
 ---
 

@@ -5,8 +5,13 @@
     "category": "Bathrooms"
   },
   {
+    "file": "assets/work-examples/built-ins/Arched Coffee Nook.jpg",
+    "caption": "Arched Coffee Nook",
+    "category": "Built-Ins"
+  },
+  {
     "file": "assets/work-examples/built-ins/Bedroom Built-In Bench and Shelving.jpg",
-    "caption": "Bedroom Built In Bench And Shelving",
+    "caption": "Bedroom Built-In Bench and Shelving",
     "category": "Built-Ins"
   },
   {
@@ -16,7 +21,7 @@
   },
   {
     "file": "assets/work-examples/built-ins/Coffee Bar and Beverage Station.jpg",
-    "caption": "Coffee Bar And Beverage Station",
+    "caption": "Coffee Bar and Beverage Station",
     "category": "Built-Ins"
   },
   {
@@ -31,12 +36,12 @@
   },
   {
     "file": "assets/work-examples/built-ins/Living Room Beams and Mantel.jpg",
-    "caption": "Living Room Beams And Mantel",
+    "caption": "Living Room Beams and Mantel",
     "category": "Built-Ins"
   },
   {
     "file": "assets/work-examples/details/Concealed Pull-Out Bins.jpg",
-    "caption": "Concealed Pull Out Bins",
+    "caption": "Concealed Pull-Out Bins",
     "category": "Details"
   },
   {
@@ -50,8 +55,28 @@
     "category": "Details"
   },
   {
+    "file": "assets/work-examples/details/Paneled Cabinet End and Toe Kick.jpg",
+    "caption": "Paneled Cabinet End and Toe Kick",
+    "category": "Details"
+  },
+  {
+    "file": "assets/work-examples/details/Walnut Reeded Glass Dish Cabinet.jpg",
+    "caption": "Walnut Reeded Glass Dish Cabinet",
+    "category": "Details"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Cream Kitchen with Display Hutch.jpg",
+    "caption": "Cream Kitchen with Display Hutch",
+    "category": "Kitchens"
+  },
+  {
     "file": "assets/work-examples/kitchen/Cream Kitchen with Lanterns.jpg",
-    "caption": "Cream Kitchen With Lanterns",
+    "caption": "Cream Kitchen with Lanterns",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Custom Hood with Reeded Glass Cabinets.jpg",
+    "caption": "Custom Hood with Reeded Glass Cabinets",
     "category": "Kitchens"
   },
   {
@@ -65,6 +90,11 @@
     "category": "Kitchens"
   },
   {
+    "file": "assets/work-examples/kitchen/Farmhouse Sink and Glass Hutch.jpg",
+    "caption": "Farmhouse Sink and Glass Hutch",
+    "category": "Kitchens"
+  },
+  {
     "file": "assets/work-examples/kitchen/Hickory Kitchen Cabinets.jpg",
     "caption": "Hickory Kitchen Cabinets",
     "category": "Kitchens"
@@ -75,8 +105,18 @@
     "category": "Kitchens"
   },
   {
+    "file": "assets/work-examples/kitchen/Open Kitchen with Walnut Island.jpg",
+    "caption": "Open Kitchen with Walnut Island",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Paneled Refrigerator Surround.jpg",
+    "caption": "Paneled Refrigerator Surround",
+    "category": "Kitchens"
+  },
+  {
     "file": "assets/work-examples/kitchen/Quartz Island and Range Wall.jpg",
-    "caption": "Quartz Island And Range Wall",
+    "caption": "Quartz Island and Range Wall",
     "category": "Kitchens"
   },
   {
@@ -96,7 +136,12 @@
   },
   {
     "file": "assets/work-examples/kitchen/Walnut and Greige Kitchen.jpg",
-    "caption": "Walnut And Greige Kitchen",
+    "caption": "Walnut and Greige Kitchen",
+    "category": "Kitchens"
+  },
+  {
+    "file": "assets/work-examples/kitchen/Walnut and Greige Range Wall.jpg",
+    "caption": "Walnut and Greige Range Wall",
     "category": "Kitchens"
   },
   {
