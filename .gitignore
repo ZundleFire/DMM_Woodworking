@@ -10,3 +10,7 @@ desktop.ini
 
 # Node (if you ever add tooling)
 node_modules/
+
+# Raw source material (brand style guide, logo masters, full photo library).
+# Kept locally; not deployed. Remove this line to version it.
+assets/NewWebsiteData/

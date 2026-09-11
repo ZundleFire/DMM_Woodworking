@@ -8,18 +8,66 @@ Built with plain HTML5, CSS3, and vanilla JS — no build step required.
 ## Project Structure
 
 ```
-clean-site/
+.
 ├── index.html          # Homepage
 ├── about-us.html       # About page
-├── gallery.html        # Photo gallery
+├── gallery.html        # Our Work — photo gallery (reads gallery.json)
 ├── contact.html        # Contact & quote request
-├── styles.css          # Shared stylesheet
+├── 404.html            # Not-found page (GitHub Pages & Cloudflare Pages serve it automatically)
+├── styles.css          # Shared stylesheet (brand style guide v2.0)
+├── resize-photos.py    # Shrinks work-example photos to web size — run before build-gallery.js
+├── build-gallery.js    # Regenerates gallery.json from assets/work-examples/
+├── gallery.json        # Generated gallery manifest — do not edit by hand
 ├── sitemap.xml
 ├── robots.txt
 ├── .gitignore
 └── assets/
-    └── images/         # Local copies of all site images
+    ├── images/         # Logo + brand line-art icons (icons/)
+    └── work-examples/  # Project photos, one folder per gallery category
+        ├── kitchen/
+        ├── bathroom/
+        ├── built-ins/
+        └── details/
 ```
+
+## Gallery
+
+Drop images into `assets/work-examples/<category>/`, then run both steps:
+
+```bash
+python resize-photos.py    # shrink to web size (needs: pip install Pillow)
+node build-gallery.js      # rewrite gallery.json
+```
+
+`build-gallery.js` rewrites `gallery.json`. Filenames become captions — underscores
+become spaces, words are title-cased, hyphens are kept (`Built-In` stays `Built-In`),
+and small words like *and* / *with* stay lowercase. The folder name becomes the
+filter label (see `CATEGORY_LABELS` in `build-gallery.js`).
+
+So name files the way you want the caption to read:
+`Cream Kitchen with Lanterns.jpg` → **Cream Kitchen with Lanterns**.
+
+### Photo sizing — don't skip this
+
+**Always run `resize-photos.py` before committing new photos.** Straight off a
+camera these run ~4900px and 1–4 MB each. The gallery displays them at 270px and
+the lightbox at ~1800px, so full-size files cost visitors megabytes for pixels they
+never see — the full gallery was a 28 MB page load before this was added, and is
+5.6 MB after.
+
+The script caps the longest edge at 1800px, saves progressive JPEG at quality 82,
+and strips EXIF (which on phone photos can carry the GPS location of a customer's
+home). It skips files that are already web-sized, so it is safe to re-run.
+
+## Hero overlays — don't lighten these
+
+The dark gradients over the hero photos in `styles.css` (`.hero`) and `about-us.html`
+(`.about-hero`) are not styling preference — their alpha values are set so white body
+text clears the WCAG AA 4.5:1 contrast minimum against the brightest pixels of the
+photo behind it. The photos run to near-white, so lightening the overlay drops the
+sub-heading below AA. Each breakpoint has its own overlay for the same reason: once
+text spans the full width on phones, a left-to-right fade leaves the end of every line
+on the bright side of the image, so those widths use an even wash instead.
 
 ---
 
@@ -30,14 +78,13 @@ Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ri
 
 **Option 2 — Python**
 ```bash
-cd clean-site
-python -m http.server 8080
+python -m http.server 8080    # from the repo root
 # Open http://localhost:8080
 ```
 
 **Option 3 — Node**
 ```bash
-npx serve clean-site
+npx serve .
 ```
 
 ---
@@ -46,9 +93,8 @@ npx serve clean-site
 
 1. **Create a GitHub repo** (e.g. `dmmwoodworking`).
 
-2. **Push the `clean-site` folder contents** to the root of the repo:
+2. **Push the repo contents** to the root of the GitHub repo:
    ```bash
-   cd clean-site
    git init
    git remote add origin https://github.com/YOUR_USERNAME/dmmwoodworking.git
    git add .
@@ -72,7 +118,7 @@ npx serve clean-site
 
 ## Deploy to Cloudflare Pages
 
-1. Push the `clean-site` contents to a GitHub repo (steps 1–2 above).
+1. Push the repo contents to a GitHub repo (steps 1–2 above).
 
 2. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
 
@@ -93,17 +139,21 @@ npx serve clean-site
 
 ## Contact Form
 
-The form currently uses `mailto:` (opens the visitor's email client).  
-For a zero-server solution, replace it with a **free [Formspree](https://formspree.io)** endpoint:
+The form in `contact.html` is wired to **[Formspree](https://formspree.io)** at
+`https://formspree.io/f/mdeobdpl`, which delivers to sales@dmmwoodworkingpa.com. It
+supports file uploads (plans, photos, sketches) — keep `enctype="multipart/form-data"`
+on the `<form>` or attachments will be dropped.
 
-In `contact.html` change the opening `<form>` tag:
-```html
-<!-- Before -->
-<form action="mailto:info@dmmwoodworking.com" method="POST" enctype="text/plain" novalidate>
+### The form is currently on hold
 
-<!-- After (remove enctype too) -->
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-```
+The page shows a call/email fallback notice instead, and the form itself is dimmed and
+`inert` so nothing can be typed or submitted. To turn it back on:
+
+1. Delete the `<p class="form-hold">…</p>` notice.
+2. Remove `inert` and `style="opacity:.55;pointer-events:none"` from the `<form>`.
+3. Change the submit button back to `type="submit"` and drop its `disabled` attribute.
+
+The same steps are noted in a comment directly above the form.
 
 ---
 
