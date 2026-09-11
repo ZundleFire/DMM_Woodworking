@@ -9,26 +9,53 @@ Built with plain HTML5, CSS3, and vanilla JS — no build step required.
 
 ```
 .
-├── index.html          # Homepage
-├── about-us.html       # About page
-├── gallery.html        # Our Work — photo gallery (reads gallery.json)
-├── contact.html        # Contact & quote request
-├── 404.html            # Not-found page (GitHub Pages & Cloudflare Pages serve it automatically)
-├── styles.css          # Shared stylesheet (brand style guide v2.0)
-├── resize-photos.py    # Shrinks work-example photos to web size — run before build-gallery.js
-├── build-gallery.js    # Regenerates gallery.json from assets/work-examples/
-├── gallery.json        # Generated gallery manifest — do not edit by hand
+├── index.html           # Homepage — served at /
+├── about-us/index.html  # About page — served at /about-us/
+├── gallery/index.html   # Our Work — photo gallery, served at /gallery/ (reads ../gallery.json)
+├── contact/index.html   # Contact & quote request — served at /contact/
+├── 404.html             # Not-found page — must stay at the repo root for GitHub
+│                        #   Pages / Cloudflare Pages to pick it up automatically
+├── styles.css           # Shared stylesheet (brand style guide v2.0)
+├── resize-photos.py     # Shrinks work-example photos to web size — run before build-gallery.js
+├── build-gallery.js     # Regenerates gallery.json from assets/work-examples/
+├── gallery.json         # Generated gallery manifest — do not edit by hand
 ├── sitemap.xml
 ├── robots.txt
 ├── .gitignore
 └── assets/
-    ├── images/         # Logo + brand line-art icons (icons/)
-    └── work-examples/  # Project photos, one folder per gallery category
+    ├── images/          # Logo + brand line-art icons (icons/)
+    └── work-examples/   # Project photos, one folder per gallery category
         ├── kitchen/
         ├── bathroom/
         ├── built-ins/
         └── details/
 ```
+
+### Why the extra folders — and why every link must keep the trailing slash
+
+`about-us.html`, `gallery.html` and `contact.html` each moved into their own folder
+as `index.html`, so the site has clean URLs — `/about-us/` instead of
+`/about-us.html` — with nothing beyond static files. Every static host serves a
+directory's `index.html` when you request the directory itself, so this needs no
+server config, redirect rules, or Jekyll.
+
+`index.html` and `404.html` stay at the root: the root *is* a directory as far as
+this trick is concerned (`/` already serves `index.html` with no extension), and
+GitHub Pages / Cloudflare Pages only look for a custom 404 page at the repo root.
+
+Internal links always write the folder **with its trailing slash** —
+`href="gallery/"`, not `href="gallery"`. Hosts redirect the slash-less form to the
+slashed one, but that's an extra round trip, and page-relative asset links (`../`)
+inside the target page resolve against whatever URL is actually in the address
+bar — so a page reached without the slash would compute `../` one level wrong and
+break its own logo, stylesheet and nav. Always link with the slash.
+
+Adding a fifth page later means creating `new-page/index.html`, not
+`new-page.html` — and every asset reference inside it needs a `../` prefix, since
+it lives one folder below the ones at the root (see the existing pages for the
+pattern: `../styles.css`, `../assets/...`, and for the nav/footer, `../about-us/`
+etc. — everything except in-page anchors, which use the shared root's own hash,
+e.g. `../#services`).
 
 ## Gallery
 
@@ -61,8 +88,8 @@ home). It skips files that are already web-sized, so it is safe to re-run.
 
 ## Hero overlays — don't lighten these
 
-The dark gradients over the hero photos in `styles.css` (`.hero`) and `about-us.html`
-(`.about-hero`) are not styling preference — their alpha values are set so white body
+The dark gradients over the hero photos in `styles.css` (`.hero`) and
+`about-us/index.html` (`.about-hero`) are not styling preference — their alpha values are set so white body
 text clears the WCAG AA 4.5:1 contrast minimum against the brightest pixels of the
 photo behind it. The photos run to near-white, so lightening the overlay drops the
 sub-heading below AA. Each breakpoint has its own overlay for the same reason: once
@@ -139,7 +166,7 @@ npx serve .
 
 ## Contact Form
 
-The form in `contact.html` is wired to **[Formspree](https://formspree.io)** at
+The form in `contact/index.html` is wired to **[Formspree](https://formspree.io)** at
 `https://formspree.io/f/mdeobdpl`, which delivers to sales@dmmwoodworkingpa.com. It
 supports file uploads (plans, photos, sketches) — keep `enctype="multipart/form-data"`
 on the `<form>` or attachments will be dropped.
