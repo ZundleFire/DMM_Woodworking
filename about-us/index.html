@@ -37,28 +37,6 @@
     .about-hero h1 { color: var(--white); font-size: clamp(2.2rem, 5vw, 3.6rem); max-width: 16ch; margin-bottom: 20px; }
     .about-hero p { max-width: 540px; color: rgba(255,255,255,.9); }
     .about-hero .btn { margin-top: 26px; }
-
-    .fact-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      border-top: 1px solid var(--gold);
-      border-bottom: 1px solid var(--gold);
-      padding: 28px 0;
-      margin-top: 44px;
-    }
-    .fact strong {
-      display: block;
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      color: var(--walnut);
-    }
-    .fact span { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--oak); }
-    @media (max-width: 720px) { .fact-row { grid-template-columns: 1fr 1fr; } }
-
-    .values-list { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
-    .values-list li { padding-left: 22px; position: relative; color: var(--charcoal); }
-    .values-list li::before { content: ""; position: absolute; left: 0; top: .7em; width: 10px; height: 2px; background: var(--gold); }
   </style>
 </head>
 <body>
@@ -76,7 +54,6 @@
       <nav class="site-nav">
         <a href="../">Home</a>
         <a href="../about-us/" class="active">About</a>
-        <a href="../#services">Services</a>
         <a href="../gallery/">Our Work</a>
         <a href="../contact/">Contact</a>
         <a href="../contact/" class="nav-cta">Let’s Build Together</a>
@@ -96,31 +73,6 @@
       </div>
     </section>
 
-    <!-- ─── STORY + FACTS ─────────────────────────────── -->
-    <section class="section section-intro">
-      <div class="wrap two-col">
-        <div class="intro-text">
-          <p class="eyebrow">Our Story</p>
-          <h2>Concept to completion, under one roof.</h2>
-          <div class="gold-rule"></div>
-          <p>We've been Lancaster's custom cabinet makers since 1993. Every piece we create reflects a commitment to excellent materials, honest communication and timeless craftsmanship.</p>
-          <p>Because design, manufacturing and installation all happen in-house, the people who draw your cabinets are the same people who build and hang them — so nothing gets lost in translation.</p>
-          <p>We partner with custom home builders, designers, architects and homeowners to create custom, quality cabinetry that elevates every space.</p>
-        </div>
-        <div class="intro-image">
-          <img src="../assets/work-examples/details/Island Post Detail.jpg" alt="Close-up of a walnut island post and marble edge" loading="lazy">
-        </div>
-      </div>
-      <div class="wrap">
-        <div class="fact-row">
-          <div class="fact"><strong>1993</strong><span>Founded</span></div>
-          <div class="fact"><strong>Lancaster, PA</strong><span>Design &amp; Shop</span></div>
-          <div class="fact"><strong>In-House</strong><span>Design · Build · Install</span></div>
-          <div class="fact"><strong>Residential &amp; Commercial</strong><span>Clients</span></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ─── CRAFT + VALUES ────────────────────────────── -->
     <section class="section section-other">
       <div class="wrap other-inner">
@@ -130,77 +82,7 @@
           <h2>Craftsmanship, collaboration, excellence.</h2>
           <div class="gold-rule"></div>
           <p>Those three words are our core values, and they show up in the details: the joinery you don't see, the finish that holds up, the drawer that closes the same way in year twenty as it did on day one.</p>
-          <ul class="values-list">
-            <li>Custom kitchens, islands and pantries</li>
-            <li>Closet systems and built-in storage</li>
-            <li>Bathroom vanities</li>
-            <li>Wet &amp; dry bars</li>
-            <li>Bedroom sets and custom furniture</li>
-            <li>Custom doors, drawer fronts &amp; solid-wood drawer boxes</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── FEATURE ROW ───────────────────────────────── -->
-    <section class="section section-features">
-      <div class="wrap">
-        <p class="eyebrow center">Our Craft. Our Skills.</p>
-        <h2 class="section-title">What sets our cabinetry apart</h2>
-        <div class="features-grid">
-          <div class="feature">
-            <img src="../assets/images/icons/design.png" alt="">
-            <h3>In-House Design</h3>
-            <p>Photo-realistic renderings before we build.</p>
-          </div>
-          <div class="feature">
-            <img src="../assets/images/icons/materials.png" alt="">
-            <h3>Premium Materials</h3>
-            <p>Hardwoods and hardware selected for longevity.</p>
-          </div>
-          <div class="feature">
-            <img src="../assets/images/icons/craft.png" alt="">
-            <h3>Master Craftsmanship</h3>
-            <p>Careful joinery and refined finishing standards.</p>
-          </div>
-          <div class="feature">
-            <img src="../assets/images/icons/cabinetry.png" alt="">
-            <h3>Custom Solutions</h3>
-            <p>Kitchens, closets, vanities, bars and furniture.</p>
-          </div>
-          <div class="feature">
-            <img src="../assets/images/icons/install.png" alt="">
-            <h3>Clean Installation</h3>
-            <p>Cabinets, trim and hardware, finished seamlessly.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<!-- ─── LANCASTER COUNTY ──────────────────────────── -->
-    <section class="section section-other">
-      <div class="wrap other-inner">
-        <div class="other-text">
-          <p class="eyebrow">Lancaster Crafted</p>
-          <h2>Proudly built in Lancaster County</h2>
-          <div class="gold-rule"></div>
-          <p>Our roots run deep in craftsmanship, hard work and treating people right. We partner with builders and designers who share those values and our commitment to exceptional results — and we've been doing it here since 1993.</p>
-          <a href="../contact/" class="btn btn-outline">Let's Build Together</a>
-        </div>
-        <img src="../assets/work-examples/built-ins/Living Room Beams and Mantel.jpg" alt="Living room with custom wood ceiling beams and mantel" loading="lazy">
-      </div>
-    </section>
-
-    <!-- ─── CTA BAND ──────────────────────────────────── -->
-    <section class="section section-cta">
-      <div class="wrap cta-inner">
-        <div class="cta-text">
-          <h2>Free quotes, no obligation.</h2>
-          <p>Tell us about your project and we'll get back to you with an estimate.</p>
-        </div>
-        <div class="cta-actions">
-          <a href="../contact/" class="btn btn-white">Contact Us</a>
-          <a href="tel:+17173902828" class="btn btn-ghost-white">(717) 390-2828</a>
+          <p>We strive to provide a seamless process from initial contact to the end of installation. We start with reviewing the goals you have with your space, and work these into a final design. Throughout design and material selections, we utilise 3D renderings to show you, as accurately as possible, what the finished space will look like. Once approved, the project moves out to the shop where our team builds and assembles the cabinets. We then deliver and install the cabinets, trim, and hardware.</p>
         </div>
       </div>
     </section>

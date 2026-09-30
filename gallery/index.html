@@ -55,11 +55,12 @@
 
     /* Gallery grid */
     .full-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      columns: 3;
+      column-gap: 18px;
     }
     .gallery-figure {
+      margin-bottom: 18px;
+      break-inside: avoid;
       overflow: hidden;
       background: var(--walnut);
       box-shadow: var(--shadow-sm);
@@ -68,8 +69,7 @@
     }
     .gallery-figure img {
       width: 100%;
-      height: 270px;
-      object-fit: cover;
+      height: auto;
       transition: transform .4s ease, opacity .3s ease;
       display: block;
     }
@@ -153,8 +153,8 @@
     .lightbox-prev { left: 16px; }
     .lightbox-next { right: 16px; }
 
-    @media(max-width:860px) { .full-gallery-grid { grid-template-columns: repeat(2,1fr); } }
-    @media(max-width:500px) { .full-gallery-grid { grid-template-columns: 1fr; } }
+    @media(max-width:860px) { .full-gallery-grid { columns: 2; } }
+    @media(max-width:500px) { .full-gallery-grid { columns: 1; } }
   </style>
 </head>
 <body>
@@ -172,7 +172,6 @@
       <nav class="site-nav">
         <a href="../">Home</a>
         <a href="../about-us/">About</a>
-        <a href="../#services">Services</a>
         <a href="../gallery/" class="active">Our Work</a>
         <a href="../contact/">Contact</a>
         <a href="../contact/" class="nav-cta">Let’s Build Together</a>
