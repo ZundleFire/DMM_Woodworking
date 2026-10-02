@@ -91,6 +91,7 @@ body {
    long transitions for users who get motion sickness from them. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero, .about-hero { background-attachment: scroll; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
@@ -255,26 +256,10 @@ h1, h2, h3, h4 {
 }
 
 /* ── Hero ─────────────────────────────────────────────────── */
-/* Image only, never cropped: the 3:2 photo is shown whole. On screens wider than
-   3:2 the height is capped and the sides fill with a blurred copy; the photo's own
-   edges fade into it. (ponytail: parallax dropped — a fixed background can't be contained.) */
+/* Fixed background: the photo stays put while the page scrolls over it. */
 .hero {
-  --hero-img: url('assets/work-examples/kitchen/Transitional Kitchen Island.jpg');
-  position:     relative;
-  overflow:     hidden;
-  width:        100%;   /* explicit, or max-height would shrink the width to keep 3:2 */
-  aspect-ratio: 3 / 2;
-  max-height:   80vh;
-  background:   var(--walnut-dk);
-}
-.hero::before, .hero::after { content: ""; position: absolute; background: var(--hero-img) center / cover no-repeat; }
-.hero::before { inset: -40px; filter: blur(28px) brightness(.75); }
-.hero::after {
-  top: 0; bottom: 0; left: 50%;
-  height: 100%; aspect-ratio: 3 / 2;
-  transform: translateX(-50%);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  min-height: 70vh;
+  background: url('assets/work-examples/kitchen/Transitional Kitchen Island.jpg') center / cover fixed no-repeat;
 }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
 
@@ -435,14 +420,14 @@ h1, h2, h3, h4 {
 /* ── Page hero (interior pages) ─────────────────────────── */
 .page-hero {
   background:
+    linear-gradient(rgba(28,21,19,.72), rgba(28,21,19,.72)),
     var(--hero-img, url('assets/work-examples/kitchen/English Cream Kitchen.jpg')) center / cover no-repeat;
   padding: 96px 0;
   color: var(--white);
   text-align: center;
 }
-/* No overlay on the photo, so the text carries its own shadow for legibility. */
-.page-hero h1 { color: var(--white); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 14px; text-shadow: 0 2px 4px rgba(0,0,0,.85), 0 0 24px rgba(0,0,0,.6); }
-.page-hero p  { color: var(--white); font-size: 1.05rem; max-width: 620px; margin: 0 auto; text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 0 18px rgba(0,0,0,.65); }
+.page-hero h1 { color: var(--white); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 14px; }
+.page-hero p  { color: rgba(255,255,255,.88); font-size: 1.05rem; max-width: 620px; margin: 0 auto; }
 
 /* ── Footer ─────────────────────────────────────────────── */
 .site-footer { background: var(--walnut-dk); color: rgba(248,244,237,.7); }
@@ -530,6 +515,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .section { padding: 68px 0; }
+  .hero { min-height: 50vh; }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .footer-inner  { grid-template-columns: 1fr; gap: 32px; }
 }
