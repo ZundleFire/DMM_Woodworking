@@ -91,7 +91,7 @@ body {
    long transitions for users who get motion sickness from them. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero, .about-hero { background-attachment: scroll; }
+  .about-hero { background-attachment: scroll; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
@@ -257,10 +257,6 @@ h1, h2, h3, h4 {
 
 /* ── Hero ─────────────────────────────────────────────────── */
 /* Fixed background: the photo stays put while the page scrolls over it. */
-.hero {
-  min-height: 70vh;
-  background: url('assets/work-examples/kitchen/Transitional Kitchen Island.jpg') center / cover fixed no-repeat;
-}
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
 
 /* ── Intro / split ───────────────────────────────────────── */
@@ -515,7 +511,6 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .section { padding: 68px 0; }
-  .hero { min-height: 50vh; }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .footer-inner  { grid-template-columns: 1fr; gap: 32px; }
 }
